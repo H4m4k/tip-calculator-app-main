@@ -7,7 +7,6 @@ html, body {
     height: 100%;
 
     font-family: 'Space Mono', monospace;
-    font-size: 24px;
 }
 
 body{
@@ -18,8 +17,44 @@ body{
 
 article {
     background-color: white;
-    border-radius: 20px;
     grid-area: 4/2 / 5/3;
+}
+
+#calc_Body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+    height: 100%;
+    padding: 1em;
+}
+
+.left_Body {
+    display: grid;
+}
+.left_Body label {
+    display: block;
+    padding: 1em 1em 1em 0;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  opacity:0;
+  pointer-events:none;
+}
+input[type=number] { -moz-appearance: textfield;}
+input.borderRound {border-radius: 5px;}
+label.bill { 
+    display: block;
+ }
+.tip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+}
+.tip button {
+    width: 100px;
+}
+#people{
+    width: 100%;
 }
 
 .right_Body {
@@ -28,7 +63,19 @@ article {
 
 #logo{
     grid-area: 2/2 / 3/3;
+    text-align: center;
 }
+
 footer {
     grid-area:7/2;
+}
+
+.borderRound { border-radius: 20px;}
+.input { 
+    width: 100%;
+    height: 50%;
+    border: none;
+    background-color: hsl(189, 41%, 97%);
+    text-align: end;
+    font-size: 24px;
 }
