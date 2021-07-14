@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+  <link rel="stylesheet" href="./CSS/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"> 
+
   <title>Frontend Mentor | Tip calculator app</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -16,29 +20,54 @@
 </head>
 <body>
 
-  Bill
+<div id="logo">Splitter</div>
 
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
 
-  Number of People
+<article>
+  <div id='calc_Body'>
 
-  Tip Amount
-  / person
+    <div class="left_Body">
+      <form> 
+        <label for="amount">Bill</label>
+          <input type='number' id='amount' name='Amount to pay' value="0" min="0" step="0.01">
+      </form>
+      <form>
+        <label for="tip">Select Tip %</label>
+          <button>5%</button>
+          <button>10%</button>
+          <button>15%</button>
+          <button>25%</button>
+          <button>50%</button>
+          <button>Custom</button>
+      </form>
+      <form>
+        <label for="people">Number of People</label>
+          <input type='number' id='people' name='Number of people' value="0" min="0" step="1">
+      </form>
+    </div> <!-- left_Body-->
 
-  Total
-  / person
+    <div class="right_Body">
+      <form> 
+        <label for="tip_Person">Tip Amount<sub>/person</sub></label>
+          <input type='number' id='tip_Person' name='Tip amount per person' value="0" min="0" step="0.01">
+      </form>
+      <form> 
+        <label for="total_Person">Total Amount<sub>/person</sub></label>
+          <input type='number' id='total_Person' name='Ttotal amount per person' value="0" min="0" step="0.01">
+      </form>
+      <form>
+        <button>RESET</button>
+      </form>
+    </div> <!-- right_Body-->
 
-  Reset
+  </div> <!-- calc_Body-->
+</article>
   
+ <footer>
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div>
+ </footer>
 </body>
 </html>
