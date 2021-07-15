@@ -5,7 +5,8 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-
+    color: hsl(186, 14%, 43%);
+    font-weight: bolder;
     font-family: 'Space Mono', monospace;
 }
 
@@ -33,8 +34,11 @@ article {
 }
 .left_Body label {
     display: block;
-    padding: 1em 1em 1em 0;
+    padding: 1em 1em .2em 0;
 }
+
+
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   opacity:0;
@@ -42,20 +46,57 @@ input[type=number]::-webkit-outer-spin-button {
 }
 input[type=number] { -moz-appearance: textfield;}
 input.borderRound {border-radius: 5px;}
-label.bill { 
-    display: block;
- }
+
+
+
+.bill_Container {
+    position: relative;
+}
+.bill_Icon:before{
+    content: url("/images/icon-dollar.svg"); 
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%)
+}
+
+
+
 .tip {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1em;
 }
 .tip button {
-    width: 100px;
+    width: auto;
+    padding: 5px 10px;
+    background-color: hsl(183, 100%, 15%);
+    border: none;
+    font-family: 'Space Mono', monospace;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 1.4em;
+    border-radius: 5px;
 }
+
+
+
 #people{
     width: 100%;
 }
+.people_Container{
+    position: relative;
+}
+.people_Icon:before {
+    content: url("/images/icon-person.svg"); 
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%)
+}
+
+
+
 
 .right_Body {
     background-color: hsl(183, 100%, 15%);
@@ -71,11 +112,14 @@ footer {
 }
 
 .borderRound { border-radius: 20px;}
+.monoSpace { font-family: 'Space Mono', monospace;}
 .input { 
     width: 100%;
-    height: 50%;
     border: none;
     background-color: hsl(189, 41%, 97%);
     text-align: end;
     font-size: 24px;
+    color: hsl(182, 17%, 67%);
+    font-weight: 700;
+    padding: 5px 20px;
 }
