@@ -32,7 +32,7 @@
         <label class='bill' for="amount">Bill</label>
           <div class='bill_Container'>
             <i class="bill_Icon"></i>
-            <input type='number' id='amount' name='Amount to pay' value="0" min="0" step="0.01" class="input borderRound monoSpace">
+            <input type='number' id='amount' name='Amount to pay' value="0" min="0" step="0.01">
           </div>
       </form>
 
@@ -49,10 +49,12 @@
       </form>
 
       <form>
-        <label class='people' for="people">Number of People</label>
+        <div class="people_Wrap">
+          <label class='people' for="people">Number of People</label><label class="red">Can't be zero</label>
+        </div>
           <div class="people_Container">
             <i class="people_Icon"></i>
-            <input type='number' id='people' name='Number of people' value="0" min="0" step="1" class="input borderRound monoSpace">
+            <input type='number' id='people' name='Number of people' value="0" min="0" step="1">
           </div>
       </form>
     </div> <!-- left_Body-->
@@ -60,17 +62,17 @@
     <div class="right_Body borderRound">
 
       <form> 
-        <label for="tip_Person">Tip Amount<sub>/person</sub></label>
-          <input type='number' id='tip_Person' name='Tip amount per person' value="0" min="0" step="0.01">
+        <label for="tip_Person">Tip Amount</br><sub>/person</sub></label>
+          <input type='number' id='tip_Person' name='Tip amount per person' value="0.00" min="0" step="0.01">
       </form>
 
       <form> 
-        <label for="total_Person">Total Amount<sub>/person</sub></label>
-          <input type='number' id='total_Person' name='Total amount per person' value="0" min="0" step="0.01">
+        <label for="total_Person">Total Amount</br><sub>/person</sub></label>
+          <input type='number' id='total_Person' name='Total amount per person' value="0.00" min="0" step="0.01">
       </form>
 
       <form>
-        <button>RESET</button>
+        <button id="reset" class="monoSpace">RESET</button>
       </form>
       
     </div> <!-- right_Body-->
