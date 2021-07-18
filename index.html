@@ -61,19 +61,23 @@
 
     <div class="right_Body borderRound">
 
-      <form> 
-        <label for="tip_Person">Tip Amount</br><sub>/person</sub></label>
-          <input type='number' id='tip_Person' name='Tip amount per person' value="0.00" min="0" step="0.01">
-      </form>
+      <div id="tip_Person">
+        <p>Tip Amount</br><sub>/person</sub></p>
+        <p class="value" id="tip_Value">$0.00</p>
+      </div> 
 
-      <form> 
-        <label for="total_Person">Total Amount</br><sub>/person</sub></label>
-          <input type='number' id='total_Person' name='Total amount per person' value="0.00" min="0" step="0.01">
-      </form>
+      
+          
+  
 
-      <form>
+      <div id="total_Person">
+        <p>Total Amount</br><sub>/person</sub></p> 
+          <p class="value" id="total_Value">$0.00</p>
+      </div>
+
+      <div>
         <button id="reset" class="monoSpace">RESET</button>
-      </form>
+      </div>
       
     </div> <!-- right_Body-->
 
