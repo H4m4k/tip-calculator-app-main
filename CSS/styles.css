@@ -31,8 +31,9 @@ article {
 }
 
 
-
-
+/************** C O N T A I N E R ****************/
+/* splits into left_Body and right_Body @desktop 
+or top = left and bottom = right */
 
 #calc_Body {
     display: grid;
@@ -74,7 +75,7 @@ input {
 .left_Body input {
     width: 100%;
     background-color: hsl(189, 41%, 97%);
-    font-size: 24px;
+    font-size: 1.5em;
     color: hsl(182, 17%, 67%);
     font-weight: 700;
     padding: 5px 20px;
@@ -171,6 +172,7 @@ input {
     color: #fff;
     width: 100%;
     justify-content: space-evenly;
+    align-items: center;
 }
 .right_Body div:last-of-type {
     place-self: end;
@@ -186,7 +188,6 @@ input {
     border: none;
 }
 .right_Body .value{
-    font-size: 50px;
     color: #27c0ac;
     font-weight: bold;
     background: transparent;
@@ -199,6 +200,10 @@ button#reset {
     background-color: hsl(183, 79%, 24%);
     color: hsl(184, 90%, 20%);
     font-weight: bolder;
+}
+button#reset:hover {
+    background: hsl(173, 61%, 77%);
+    color: hsl(183, 100%, 15%);
 }
 
 
@@ -221,6 +226,8 @@ footer {
 .off { display: none;}
 .red { color: #c27d6e;}
 .red_Outline { outline: solid #b47e6e;}
+.font_Size { font-size: 1em ;}
+.font_Size__Value {font-size: 3em;}
 button {
     border: none;
     border-radius: 7px;
@@ -230,12 +237,24 @@ p{ padding: 0; margin: 0;}
 
 
 
-@media screen and ( min-width:768px) and (max-width:1024px) {
+
+@media screen and ( max-width: 1280px ) {
     html,body {
         min-height: 100vh;
     }
     main {
-        grid-template: auto min-content 1fr / 1fr 2fr 1fr;
+        grid-template: auto min-content 1fr / .3fr 1fr .3fr;
+    }
+    .font_Size {font-size: 1em;}
+    .font_Size__Value {font-size: 2.5em;}
+}
+
+@media screen and ( min-width: 651px) and (max-width: 990px) {
+    html,body {
+        min-height: 100vh;
+    }
+    main {
+        grid-template: auto min-content 1fr / .3fr 1fr .3fr;
     }
     #logo {
         grid-area: 1/2 / 2/3;
@@ -250,4 +269,76 @@ p{ padding: 0; margin: 0;}
         grid-template-rows: repeat(2, 1fr);
         grid-template-columns: none;
     }
+    .font_Size {font-size: 1em;}
+    .font_Size__Value {font-size: 2.5em;}
+}
+
+@media screen and ( min-width:550px) and (max-width:650px) {
+    html,body {
+        min-height: 100vh;
+    }
+    main {
+        grid-template: auto min-content 1fr / .2fr 1fr .2fr;
+    }
+    #logo {
+        grid-area: 1/2 / 2/3;
+    }
+    article {
+        grid-area: 2/2 / 3/3;
+    }
+    footer {
+        grid-area: 3/2 / 4/3;
+    }
+    #calc_Body {
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: none;
+    }
+    .font_Size {font-size: 1em;}
+    .font_Size__Value {font-size: 2.5em;}
+    
+}
+
+@media screen and (min-width: 451px ) and (max-width: 549px) {
+    main {
+        grid-template: auto min-content 1fr / .2fr 1fr .2fr;
+    }
+    #logo {
+        grid-area: 1/2 / 2/3;
+    }
+    article {
+        grid-area: 2/2 / 3/3;
+    }
+    footer {
+        grid-area: 3/2 / 4/3;
+    }
+    #calc_Body {
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: none;
+    }
+    .font_Size {font-size: .8em;}
+    .font_Size__Value {font-size: 2.25em;}
+}
+
+@media screen and (max-width: 450px) {
+    #logo {
+        grid-area: 1/2 / 2/3;
+    }
+    main {
+        grid-template: auto min-content 1fr / auto;
+    }
+    #logo {
+        grid-area: 1/2 / 2/3;
+    }
+    article {
+        grid-area: 2/2 / 3/3;
+    }
+    footer {
+        grid-area: 3/2 / 4/3;
+    }
+    #calc_Body {
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: none;
+    }
+    .font_Size {font-size: .8em;}
+    .font_Size__Value {font-size: 2.25em;}
 }
