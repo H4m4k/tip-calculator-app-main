@@ -1,10 +1,10 @@
 * , *::before, *::after
 { box-sizing: border-box; }
 
-html, body {
+body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    
     color: hsl(186, 14%, 43%);
     font-weight: bolder;
     font-family: 'Space Mono', monospace;
@@ -12,6 +12,10 @@ html, body {
 
 body{
     background-color:hsl(185, 41%, 84%) ;
+    
+}
+
+main {
     display: grid;
     grid-template: .6fr min-content .2fr 1.6fr max-content 1fr .2fr / 1fr 2fr 1fr;
 }
@@ -39,7 +43,7 @@ article {
 }
 
 
-
+/************** L E F T  B O D Y ****************/
 
 
 .left_Body {
@@ -75,7 +79,10 @@ input {
     font-weight: 700;
     padding: 5px 20px;
 }
-
+.left_Body  div.tip > input {
+    color: 	hsl(183, 100%, 15%);
+    text-align: center;
+}
 
 
 
@@ -146,6 +153,9 @@ input {
 
 
 
+/************** R I G H T  B O D Y ****************/
+
+
 .right_Body {
     background-color: hsl(183, 100%, 15%);
     display: grid;
@@ -189,12 +199,18 @@ button#reset {
 }
 
 
-
+/************** F O O T E R ****************/
 
 
 footer {
-    grid-area:7/2;
+    grid-area:7/2 / 8/3;
 }
+
+
+
+/************** U T I L I T Y ****************/
+
+
 
 .borderRound { border-radius: 20px;}
 .monoSpace { font-family: 'Space Mono', monospace;}
@@ -209,3 +225,26 @@ button {
 }
 p{ padding: 0; margin: 0;}
 
+
+
+@media only screen and ( min-width:768px) and (max-width:1024px) {
+    html,body {
+        min-height: 100vh;
+    }
+    main {
+        grid-template: auto min-content auto / 1fr 2fr 1fr;
+    }
+    #logo {
+        grid-area: 1/2 / 2/3;
+    }
+    article {
+        grid-area: 2/2 / 3/3;
+    }
+    footer {
+        grid-area: 3/2 / 4/3;
+    }
+    #calc_Body {
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: none;
+    }
+}

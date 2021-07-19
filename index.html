@@ -19,8 +19,8 @@
   </style>
 </head>
 <body>
-
-<div id="logo"><img src='./images/logo.svg'></div>
+<Main>
+<div id="logo"><h1><img src='./images/logo.svg' alt='Splitter'></h1></div>
 
 
 <article class="borderRound">
@@ -44,7 +44,7 @@
           <button>15%</button>
           <button>25%</button>
           <button>50%</button>
-          <button>Custom</button>
+          <input type="number" step="1" placeholder="Custom">
         </div>
       </form>
 
@@ -54,7 +54,7 @@
         </div>
           <div class="people_Container">
             <i class="people_Icon"></i>
-            <input type='number' id='people' name='Number of people' value="0" min="0" step="1">
+            <input type='number' id='people' name='Number of people' value="0" min="0" step="1" required>
           </div>
       </form>
     </div> <!-- left_Body-->
@@ -83,12 +83,14 @@
 
   </div> <!-- calc_Body-->
 </article>
-  
+
  <footer>
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Paweł Janik</a>.
   </div>
  </footer>
+
+</Main>
 </body>
 </html>
