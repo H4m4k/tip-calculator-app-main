@@ -82,6 +82,8 @@ input {
 .left_Body  div.tip > input {
     color: 	hsl(183, 100%, 15%);
     text-align: center;
+    padding: 1%;
+    font-size: 1.2em;
 }
 
 
@@ -97,6 +99,7 @@ input {
     left: 5%;
     transform: translateY(-50%)
 }
+.left_Body div.tip > input:hover,
 .bill_Container input:hover,
 .bill_Container input:focus {
     outline: solid #5aa9a0;
@@ -227,12 +230,12 @@ p{ padding: 0; margin: 0;}
 
 
 
-@media only screen and ( min-width:768px) and (max-width:1024px) {
+@media screen and ( min-width:768px) and (max-width:1024px) {
     html,body {
         min-height: 100vh;
     }
     main {
-        grid-template: auto min-content auto / 1fr 2fr 1fr;
+        grid-template: auto min-content 1fr / 1fr 2fr 1fr;
     }
     #logo {
         grid-area: 1/2 / 2/3;
