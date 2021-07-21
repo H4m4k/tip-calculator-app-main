@@ -4,9 +4,11 @@ const buttons = document.querySelectorAll('.tip button')
 const zero = document.querySelector('#zero')
 
 let person_Tip = document.querySelector('#tip_Value')
-let total_Tip = document.querySelector('#total_Value')
+let person_Bill = document.querySelector('#total_Value')
 
 let selected_Tip = '0'
+let per
+
 
 people.addEventListener('input', validate)
 
@@ -36,7 +38,8 @@ function personal_Tip(percent) {
     if (people.value === '0' || selected_Tip === '0' ) {
         return person_Tip.textContent = '0.00'
     } else {
-        return ((percent/100)*bill.value).toFixed(2)
+        person_Tip =  ( ( (percent/100)*bill.value )/people.value  ).toFixed(2)
+        return person_Tip
     }
 
 }
@@ -45,19 +48,22 @@ function personal_Bill() {
     if (people.value === '0') {
         zero.classList.remove('off')
         people.classList.add('red_Outline')
-        return total_Tip.textContent = '0.00'
+        return person_Bill.textContent = '0.00'
     } else {
          zero.classList.add('off')
          people.classList.remove('red_Outline')
-         return (bill.value/people.value).toFixed(2)
+         return ((bill.value/people.value)).toFixed(2)
     }
-    return (people.value/personal_Tip()).toFixed(2)
+}
+
+function sum() {
+        return Number.parseFloat(personal_Bill()) + Number.parseFloat(personal_Tip(selected_Tip))
 }
 
 function validate() {
     console.log(selected_Tip)
     person_Tip.textContent = `$${personal_Tip(selected_Tip)}`
-    total_Tip.textContent = `$${personal_Bill() }`
+    person_Bill.textContent = `$${sum().toFixed(2)}`
     return console.log(people.value)
 }
 
