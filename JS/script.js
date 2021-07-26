@@ -6,15 +6,14 @@ const zero = document.querySelector('#zero')
 let person_Tip = document.querySelector('#tip_Value')
 let person_Bill = document.querySelector('#total_Value')
 
-let selected_Tip = '0'
-let per
+let selected_Tip = '0';
 
 
 people.addEventListener('input', validate)
 
 buttons.forEach(button => button.addEventListener('click', event => {
     event.preventDefault();
-    selected_Tip = event.target.textContent.replace('%','')
+    selected_Tip = event.target.textContent.replace('%','');
 }))
 
 
