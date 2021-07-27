@@ -128,10 +128,8 @@ input {
     background: hsl(173, 61%, 77%);
     color: hsl(183, 100%, 15%);
 }
-.tip button:focus {
-    background-color: #26c2ad;
-    color: #00494d;
-}
+
+
 
 
 
