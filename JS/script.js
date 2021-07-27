@@ -2,6 +2,7 @@ const bill = document.querySelector('#amount')
 const people = document.querySelector('#people')
 const buttons = document.querySelectorAll('.tip button')
 const zero = document.querySelector('#zero')
+const reset_Btn = document.querySelector('#reset')
 
 let person_Tip = document.querySelector('#tip_Value')
 let person_Bill = document.querySelector('#total_Value')
@@ -14,8 +15,10 @@ people.addEventListener('input', validate)
 buttons.forEach(button => button.addEventListener('click', event => {
     event.preventDefault();
     selected_Tip = event.target.textContent.replace('%','');
+    validate();
 }))
 
+reset_Btn.addEventListener('click', reset)
 
 // ORDER OF CALCULATION 
 /*
@@ -33,12 +36,12 @@ ad.4b - display total amount per person after summing the bill per person and ti
 
 
 
-function personal_Tip(percent) {
+function personal_Tip(percent = '0') {
     if (people.value === '0' || selected_Tip === '0' ) {
         return person_Tip.textContent = '0.00'
     } else {
-        person_Tip =  ( ( (percent/100)*bill.value )/people.value  ).toFixed(2)
-        return person_Tip
+        tip =  ( ( (percent/100)*bill.value )/people.value  ).toFixed(2)
+        return tip
     }
 
 }
@@ -66,4 +69,10 @@ function validate() {
     return console.log(people.value)
 }
 
-
+function reset() {
+    bill.value = '0'
+    people.value = '0'
+    personal_Tip();
+    personal_Bill()
+    return 0;
+}
