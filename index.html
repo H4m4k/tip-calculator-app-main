@@ -1,97 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="stylesheet" href="./CSS/styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"> 
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./CSS/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <title>Frontend Mentor | Tip calculator app</title>
+    <title>Frontend Mentor | Tip calculator app</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-  <script type="text/javascript" src="/JS/script.js" async></script>
-</head>
-<body>
-<Main>
-<div id="logo"><h1><img src='./images/logo.svg' alt='Splitter'></h1></div>
-
-
-<article class="borderRound">
-  <div id='calc_Body'>
-
-    <div class="left_Body">
-
-      <form> 
-        <label class='bill font_Size' for="amount">Bill</label>
-          <div class='bill_Container'>
-            <i class="bill_Icon"></i>
-            <input type='number' id='amount' name='Amount to pay' value="0" min="0" step="0.01">
-          </div>
-      </form>
-
-      <form>
-        <label>Select Tip %</label>
-        <div class="tip font_Size">
-          <button>5%</button>
-          <button>10%</button>
-          <button>15%</button>
-          <button>25%</button>
-          <button>50%</button>
-          <input type="number" step="1" placeholder="Custom">
-        </div>
-      </form>
-
-      <form>
-        <div class="people_Wrap">
-          <label class='people font_Size' for="people">Number of People</label><p id='warning' class="red font_Size off">Can't be zero</p>
-        </div>
-          <div class="people_Container font_Size">
-            <i class="people_Icon"></i>
-            <input type='number' id='people' name='Number of people' value="0" min="0" step="1">
-          </div>
-      </form>
-    </div> <!-- left_Body-->
-
-    <div class="right_Body borderRound">
-
-      <div id="tip_Person">
-        <p class='font_Size'>Tip Amount<br><sub>/person</sub></p>
-        <p class='font_Size__Value value' id="tip_Value">$0.00</p>
-      </div> 
-
-      
-          
-  
-
-      <div id="total_Person">
-        <p class='font_Size'>Total Amount<br><sub>/person</sub></p> 
-          <p class='font_Size__Value value' id="total_Value">$0.00</p>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <script type="text/javascript" src="/JS/script.js" async></script>
+  </head>
+  <body>
+    <main>
+      <div id="logo">
+        <h1><img src="./images/logo.svg" alt="Splitter" /></h1>
       </div>
 
-      <div>
-        <button id="reset" class="monoSpace">RESET</button>
-      </div>
-      
-    </div> <!-- right_Body-->
+      <article class="borderRound">
+        <div id="calc_Body">
+          <div class="left_Body">
+            <form>
+              <label class="bill font_Size" for="amount">Bill</label>
+              <div class="bill_Container">
+                <i class="bill_Icon"></i>
+                <input
+                  type="number"
+                  id="amount"
+                  name="Amount to pay"
+                  placeholder="0"
+                  min="0"
+                  value="0"
+                  step="0.01"
+                />
+              </div>
+            </form>
 
-  </div> <!-- calc_Body-->
-</article>
+            <form>
+              <label>Select Tip %</label>
+              <div class="tip font_Size">
+                <button button="button" data-tip="5">5%</button>
+                <button button="button" data-tip="10">10%</button>
+                <button button="button" data-tip="15">15%</button>
+                <button button="button" data-tip="25">25%</button>
+                <button button="button" data-tip="50">50%</button>
+                <input
+                  id="custom"
+                  type="number"
+                  step="1"
+                  placeholder="Custom"
+                />
+              </div>
+            </form>
 
- <footer>
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Paweł Janik</a>.
-  </div>
- </footer>
+            <form>
+              <div class="people_Wrap">
+                <label class="people font_Size" for="people"
+                  >Number of People</label
+                >
+                <p id="warning" class="red font_Size off">Can't be zero</p>
+              </div>
+              <div class="people_Container font_Size">
+                <i class="people_Icon"></i>
+                <input
+                  type="number"
+                  id="people"
+                  name="Number of people"
+                  min="0"
+                  placeholder="0"
+                />
+              </div>
+            </form>
+          </div>
+          <!-- left_Body-->
 
-</Main>
-</body>
+          <div class="right_Body borderRound">
+            <div id="tip_Person">
+              <p class="font_Size">Tip Amount<br /><sub>/person</sub></p>
+              <p class="font_Size__Value value" id="tip_Value">$0.00</p>
+            </div>
+
+            <div id="total_Person">
+              <p class="font_Size">Total Amount<br /><sub>/person</sub></p>
+              <p class="font_Size__Value value" id="total_Value">$0.00</p>
+            </div>
+
+            <div>
+              <button id="reset" class="monoSpace button__Reset">RESET</button>
+            </div>
+          </div>
+          <!-- right_Body-->
+        </div>
+        <!-- calc_Body-->
+      </article>
+
+      <footer>
+        <div class="attribution">
+          Challenge by
+          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+            >Frontend Mentor</a
+          >. Coded by <a href="#">Paweł Janik</a>.
+        </div>
+      </footer>
+    </main>
+  </body>
 </html>
