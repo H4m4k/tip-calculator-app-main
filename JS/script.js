@@ -7,8 +7,9 @@ const custom = document.querySelector("#custom");
 const cant_Zero = document.querySelector("#warning");
 const reset_Btn = document.querySelector("#reset");
 
-const regex = /\d{1,}/;
+const integer = /\d{1,}/;
 const zeroes = /0{2,}/;
+const dot = /\./;
 let interval;
 let person_Tip = document.querySelector("#tip_Value");
 let person_Bill = document.querySelector("#total_Value");
@@ -82,24 +83,26 @@ function test() {
 }
 
 function validate_Bill() {
-  if (!regex.test(bill.value) && bill.value !== "0") {
+  if (!integer.test(bill.value) && bill.value !== "0") {
     console.log("wpisałeś litery kasztanie");
-    bill.value = "0";
+    bill.value = "";
   } else if (zeroes.test(bill.value)) {
-    bill.value = "0";
+    bill.value = "";
   } else {
     manager.bill = true;
   }
 }
 
 function validate_People() {
-  if (!regex.test(people.value) && people.value !== "0") {
+  if (!integer.test(people.value) && people.value !== "0") {
     console.log("wpisałeś litery kasztanie");
-    people.value = "0";
+    people.value = "";
   } else if (people.value === "0") {
     zeroWarning();
+  } else if (dot.test(people.value)) {
+    reset();
   } else if (zeroes.test(people.value)) {
-    people.value = "0";
+    people.value = "";
   } else {
     removeWarning();
     manageReset("on");
@@ -108,7 +111,7 @@ function validate_People() {
 }
 
 function validate_Custom() {
-  if (!regex.test(custom.value)) {
+  if (!integer.test(custom.value)) {
     custom.value = "";
   } else {
     selected_Tip = custom.value;
@@ -117,8 +120,8 @@ function validate_Custom() {
 }
 
 function reset() {
-  bill.value = "0";
-  people.value = "0";
+  bill.value = "";
+  people.value = "";
   selected_Tip = "0";
   person_Tip.textContent = `$${"0.00"}`;
   person_Bill.textContent = `$${"0.00"}`;
@@ -153,3 +156,21 @@ function manageReset(state) {
     return reset_Btn.classList.remove("btn_Active");
   }
 }
+
+/*  FEEDBACK 
+The JS for 'Tip Amount' and 'Total Amount' shouldn't calculate when the output will be NaN or Infinity.
+
+The selected tip amount button should stay the lighter green to indicate the current selection.
+
+When a custom tip is entered, the button should change color just like the other tip buttons. When going back to a fixed tip amount, the number should reset and go back to custom automatically.
+
+Custom tip text is not centered.
+
+The reset button is the wrong color.
+
+VV  - The input field text should change color when a number is entered, and the 0 placeholder text shouldn't remain.
+  /SOLUTION/ - added the placeholder pseudoelement with color styling 
+
+VV  - The number of people doesn't give an error when a fractional number is put in.
+  /SOLUTION/ - used REGEX to reset every time a dot is entered
+*/

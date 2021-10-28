@@ -41,6 +41,7 @@
       <article class="borderRound">
         <h2 class="off">Tip calculator</h2>
         <div id="calc_Body">
+          
           <div class="left_Body">
             <form>
               <label class="bill font_Size" for="amount">Bill</label>
@@ -52,7 +53,6 @@
                   name="Amount to pay"
                   placeholder="0"
                   min="0"
-                  value="0"
                   step="0.01"
                 />
               </div>
@@ -89,6 +89,8 @@
                   id="people"
                   name="Number of people"
                   min="0"
+                  pattern="[0-9]"
+                  step="1"
                   placeholder="0"
                 />
               </div>

@@ -75,9 +75,12 @@ input {
   width: 100%;
   background-color: hsl(189, 41%, 97%);
   font-size: 1.5em;
-  color: hsl(182, 17%, 67%);
+  color: hsl(183, 100%, 15%);
   font-weight: 700;
   padding: 5px 20px;
+}
+.left_Body input::placeholder {
+  color: hsl(182, 17%, 67%);
 }
 .left_Body div.tip > input {
   color: hsl(183, 100%, 15%);
@@ -98,7 +101,8 @@ input {
 }
 .left_Body div.tip > input:hover,
 .bill_Container input:hover,
-.bill_Container input:focus {
+.bill_Container input:focus,
+.people_Container input:focus {
   outline: solid #5aa9a0;
 }
 
@@ -223,7 +227,7 @@ footer {
   color: #c27d6e;
 }
 .red_Outline {
-  outline: solid #b47e6e;
+  outline: solid #b47e6e !important;
 }
 .font_Size {
   font-size: 1em;
