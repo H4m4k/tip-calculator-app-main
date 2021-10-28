@@ -31,7 +31,6 @@
         color: hsl(228, 45%, 44%);
       }
     </style>
-    <script type="text/javascript" src="/JS/script.js" async></script>
   </head>
   <body>
     <main>
@@ -40,6 +39,7 @@
       </div>
 
       <article class="borderRound">
+        <h2 class="off">Tip calculator</h2>
         <div id="calc_Body">
           <div class="left_Body">
             <form>
@@ -61,11 +61,11 @@
             <form>
               <label>Select Tip %</label>
               <div class="tip font_Size">
-                <button button="button" data-tip="5">5%</button>
-                <button button="button" data-tip="10">10%</button>
-                <button button="button" data-tip="15">15%</button>
-                <button button="button" data-tip="25">25%</button>
-                <button button="button" data-tip="50">50%</button>
+                <button data-tip="5">5%</button>
+                <button data-tip="10">10%</button>
+                <button data-tip="15">15%</button>
+                <button data-tip="25">25%</button>
+                <button data-tip="50">50%</button>
                 <input
                   id="custom"
                   type="number"
@@ -125,5 +125,6 @@
         </div>
       </footer>
     </main>
+    <script src="/JS/script.js" async></script>
   </body>
 </html>
