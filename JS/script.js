@@ -7,21 +7,21 @@ const custom = document.querySelector("#custom");
 const cant_Zero = document.querySelector("#warning");
 const reset_Btn = document.querySelector("#reset");
 
+
 const integer = /\d{1,}/;
 const zeroes = /0{2,}/;
 const dot = /\./;
+
 let interval;
 let person_Tip = document.querySelector("#tip_Value");
 let person_Bill = document.querySelector("#total_Value");
-
 let selected_Tip = 0;
 
 bill.addEventListener("input", validate_Bill);
 people.addEventListener("input", validate_People);
-custom.addEventListener("input", validate_Custom);
-calculator.addEventListener("change", runManager);
+custom.addEventListener("change", validate_Custom);
+// calculator.addEventListener("input", runManager);
 
-reset();
 
 //-----------------// Manager //-----------------//
 // checks for ready to calculate state if all keys values are true
@@ -31,17 +31,11 @@ const manager = {
   people: false,
 };
 
-//-----------------// AD. 2 //-----------------//
-buttons.forEach((button) =>
-  button.addEventListener("click", (event) => {
-    event.preventDefault();
-    selected_Tip = Number.parseInt(event.target.dataset.tip);
-    console.log(event.target.dataset.tip + " event target");
-    console.log(selected_Tip + " selected TIP");
-    personal_Tip(selected_Tip);
-    manager.tip = true;
-  })
-);
+
+
+reset();
+
+
 
 //-----------------// AD. 5 //-----------------//
 reset_Btn.addEventListener("click", reset);
@@ -75,27 +69,64 @@ function total_Amount() {
 
 function test() {
   console.log("manager działa");
-  let check = Object.values(manager).every((item) => item === true);
-  if (check) {
+  const verify = Object.values(manager).every((item) => item === true);
+  if (verify) {
     person_Tip.textContent = `$${personal_Tip(selected_Tip)}`;
     person_Bill.textContent = `$${total_Amount().toFixed(2)}`;
+    // manageReset("reset")
+    return 0;
   }
 }
 
+
+//-----------------// VALIDATE BILL AMOUNT //-----------------//
 function validate_Bill() {
   if (!integer.test(bill.value) && bill.value !== "0") {
-    console.log("wpisałeś litery kasztanie");
+    console.log("Only integers are allowed");
     bill.value = "";
   } else if (zeroes.test(bill.value)) {
     bill.value = "";
   } else {
     manager.bill = true;
+    test()
   }
 }
 
+
+//-----------------// VALIDATE TIP //-----------------//
+
+
+buttons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+      event.preventDefault();
+      buttons.forEach(button => button.classList.remove('active'))
+      selected_Tip = Number.parseInt(event.target.dataset.tip);
+      event.target.classList.add('active')
+      console.log(event.target.dataset.tip + " event target");
+      console.log(selected_Tip + " selected TIP");
+      personal_Tip(selected_Tip);
+      manager.tip = true;
+      test();
+    })
+  }
+);
+
+
+function validate_Custom() {
+  //If the custom.value is not an integer reset the input.value
+  if (!integer.test(custom.value)) {
+    custom.value = "";
+  } else {
+    selected_Tip = custom.value;
+    manager.tip = true;
+    test();
+  }
+}
+
+//-----------------// VALIDATE PEOPLE NUMBER //-----------------//
 function validate_People() {
   if (!integer.test(people.value) && people.value !== "0") {
-    console.log("wpisałeś litery kasztanie");
+    console.log("Only integers are allowed");
     people.value = "";
   } else if (people.value === "0") {
     zeroWarning();
@@ -107,17 +138,10 @@ function validate_People() {
     removeWarning();
     manageReset("on");
     manager.people = true;
+    test();
   }
 }
 
-function validate_Custom() {
-  if (!integer.test(custom.value)) {
-    custom.value = "";
-  } else {
-    selected_Tip = custom.value;
-    manager.tip = true;
-  }
-}
 
 function reset() {
   bill.value = "";
@@ -126,47 +150,47 @@ function reset() {
   person_Tip.textContent = `$${"0.00"}`;
   person_Bill.textContent = `$${"0.00"}`;
   custom.value = "" + "%";
+  manageReset("reset")
   manageReset("off");
-  return 0;
 }
 
-function runManager() {
-  if (person_Bill.textContent !== "$0.00") {
-    console.log("wyłączam interwał");
-    return clearInterval(interval);
-  }
-  interval = setInterval(test, 500);
-  return console.log(interval + " interwał");
-}
 
 function zeroWarning() {
   warning.classList.remove("off");
   people.classList.add("red_Outline");
 }
 
+
 function removeWarning() {
   warning.classList.add("off");
   people.classList.remove("red_Outline");
 }
+
 
 function manageReset(state) {
   if (state === "on") {
     return reset_Btn.classList.add("btn_Active");
   } else if (state === "off") {
     return reset_Btn.classList.remove("btn_Active");
+  } else if (state === "reset") {
+    return Object.keys(manager).forEach(v =>  manager[v] = false)
   }
 }
 
-/*  FEEDBACK 
-The JS for 'Tip Amount' and 'Total Amount' shouldn't calculate when the output will be NaN or Infinity.
 
-The selected tip amount button should stay the lighter green to indicate the current selection.
+
+/*  FEEDBACK 
+VV The JS for 'Tip Amount' and 'Total Amount' shouldn't calculate when the output will be NaN or Infinity. 
+  /SOLUTION/ - removed the interval checking mechanism, instead a test is run after each input to check if its possible to calculate
+
+VV The selected tip amount button should stay the lighter green to indicate the current selection.
+  /SOLUTION/ - added simple loop mechanism to the click event that cleares all active classes first, than adds active class to the one selected
 
 When a custom tip is entered, the button should change color just like the other tip buttons. When going back to a fixed tip amount, the number should reset and go back to custom automatically.
 
 Custom tip text is not centered.
 
-The reset button is the wrong color.
+VV - The reset button is the wrong color.
 
 VV  - The input field text should change color when a number is entered, and the 0 placeholder text shouldn't remain.
   /SOLUTION/ - added the placeholder pseudoelement with color styling 
