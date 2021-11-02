@@ -68,7 +68,7 @@ function total_Amount() {
 }
 
 function test() {
-  console.log("manager działa");
+  console.log("manager test underway");
   const verify = Object.values(manager).every((item) => item === true);
   if (verify) {
     person_Tip.textContent = `$${personal_Tip(selected_Tip)}`;
@@ -99,7 +99,7 @@ function validate_Bill() {
 buttons.forEach((button) => {
   button.addEventListener("click", (event) => {
       event.preventDefault();
-      buttons.forEach(button => button.classList.remove('active'))
+      clearActive();
       selected_Tip = Number.parseInt(event.target.dataset.tip);
       event.target.classList.add('active')
       console.log(event.target.dataset.tip + " event target");
@@ -114,9 +114,11 @@ buttons.forEach((button) => {
 
 function validate_Custom() {
   //If the custom.value is not an integer reset the input.value
+  clearActive()
   if (!integer.test(custom.value)) {
     custom.value = "";
   } else {
+    custom.classList.add('green_Outline')
     selected_Tip = custom.value;
     manager.tip = true;
     test();
@@ -150,8 +152,9 @@ function reset() {
   person_Tip.textContent = `$${"0.00"}`;
   person_Bill.textContent = `$${"0.00"}`;
   custom.value = "" + "%";
-  manageReset("reset")
+  manageReset("reset");
   manageReset("off");
+  clearActive();
 }
 
 
@@ -177,24 +180,39 @@ function manageReset(state) {
   }
 }
 
+function clearActive() {
+  custom.classList.remove('green_Outline')
+  return buttons.forEach(button => button.classList.remove('active'))
+}
 
 
-/*  FEEDBACK 
-VV The JS for 'Tip Amount' and 'Total Amount' shouldn't calculate when the output will be NaN or Infinity. 
-  /SOLUTION/ - removed the interval checking mechanism, instead a test is run after each input to check if its possible to calculate
+/*  FEEDBACK
+**************
 
-VV The selected tip amount button should stay the lighter green to indicate the current selection.
+VV - The JS for 'Tip Amount' and 'Total Amount' shouldn't calculate when the output will be NaN or Infinity. 
+  /SOLUTION/ - removed the interval checking mechanism, instead a function test (test() checks if all states of manager object are true to perform calculation) is started after each input to check if its possible to calculate
+
+
+VV - The selected tip amount button should stay the lighter green to indicate the current selection.
   /SOLUTION/ - added simple loop mechanism to the click event that cleares all active classes first, than adds active class to the one selected
 
-When a custom tip is entered, the button should change color just like the other tip buttons. When going back to a fixed tip amount, the number should reset and go back to custom automatically.
 
-Custom tip text is not centered.
+VV - When a custom tip is entered, the button should change color just like the other tip buttons. When going back to a fixed tip amount, the number should reset and go back to custom automatically.
+  /SOLUTION/ - created a class .green_Outline which is added when custom is activated with input and removed with clearActive() function at the load of website or pressing the reset button
+
+?? - Custom tip text is not centered.
 
 VV - The reset button is the wrong color.
+  /SOLUTION/ - changed the color
+
 
 VV  - The input field text should change color when a number is entered, and the 0 placeholder text shouldn't remain.
   /SOLUTION/ - added the placeholder pseudoelement with color styling 
 
+
 VV  - The number of people doesn't give an error when a fractional number is put in.
   /SOLUTION/ - used REGEX to reset every time a dot is entered
-*/
+
+
+  */
+

@@ -88,7 +88,6 @@ input {
   padding: 1%;
   font-size: 1.2em;
 }
-
 .bill_Container {
   position: relative;
 }
@@ -99,10 +98,12 @@ input {
   left: 5%;
   transform: translateY(-50%);
 }
-.left_Body div.tip > input:hover,
+ div.tip input:hover,
+ div.tip input:focus,
 .bill_Container input:hover,
 .bill_Container input:focus,
-.people_Container input:focus {
+.people_Container input:focus 
+{
   outline: solid #5aa9a0;
 }
 
@@ -223,6 +224,9 @@ footer {
 }
 .red_Outline {
   outline: solid #b47e6e !important;
+}
+.green_Outline {
+  outline: solid #5aa9a0;
 }
 .font_Size {
   font-size: 1em;
